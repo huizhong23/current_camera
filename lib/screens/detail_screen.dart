@@ -3,10 +3,11 @@ import 'package:flutter/src/widgets/framework.dart';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod_http_get_request/models/user_model.dart';
 import 'package:flutter_riverpod_http_get_request/screens/camera_screen.dart';
 import 'package:image_picker/image_picker.dart';
-import 'camera_screen.dart';
+import '../services/image_picker_service.dart';
 
 class DetailScreen extends StatelessWidget {
   const DetailScreen({Key? key, required this.e}) : super(key: key);
@@ -32,22 +33,23 @@ class DetailScreen extends StatelessWidget {
               ],
             )),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-            Navigator.push(
+      floatingActionButton: Consumer(builder: (context, ref, child) {
+        final imagePickerService = ref.watch(imagePickerServiceProvider);
+        return FloatingActionButton(
+          onPressed: () {
+            /*  Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => const TakePictureScreen(camera: )),
-            );
-        },
-        //tooltip: 'Camera',
-        child: const Icon(Icons.camera),
-      ),
+              MaterialPageRoute(builder: (context) => CameraScreen()),
+            ).then((value) {
+              final imagePickerService = ref.watch(imagePickerServiceProvider);
+              imagePickerService.imagePath = null;
+            }); */
+            imagePickerService.takeCamera();
+          },
+          //tooltip: 'Camera',
+          child: const Icon(Icons.camera),
+        );
+      }),
     );
   }
 }
-
-// void openCamera() async {
-//   var picture = await ImagePicker.pickImage(
-//     source: ImageSource.camera,
-//   );
-// }

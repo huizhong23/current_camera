@@ -1,4 +1,4 @@
-import 'dart:async';
+/* import 'dart:async';
 import 'dart:io';
 
 import 'package:camera/camera.dart';
@@ -34,6 +34,10 @@ class TakePictureScreen extends StatefulWidget {
   });
 
   final CameraDescription camera;
+
+  CameraDescription get _cameraDescription {
+    return camera;
+  }
 
   @override
   TakePictureScreenState createState() => TakePictureScreenState();
@@ -137,3 +141,4 @@ class DisplayPictureScreen extends StatelessWidget {
     );
   }
 }
+ */

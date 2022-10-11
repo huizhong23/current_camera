@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+//import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod_http_get_request/dataprovider/data_provider.dart';
@@ -10,14 +10,14 @@ class MyHomePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, ref) {
-    final _data = ref.watch(userDataProvider);
+    final data = ref.watch(userDataProvider);
     return Scaffold(
       appBar: AppBar(
         title: const Text("Riverpod"),
       ),
-      body: _data.when(
-          data: (_data) {
-            List<UserModel> userList = _data.map((e) => e).toList();
+      body: data.when(
+          data: (data) {
+            List<UserModel> userList = data.map((e) => e).toList();
             return Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: Column(
@@ -37,7 +37,8 @@ class MyHomePage extends ConsumerWidget {
                               child: Card(
                                 color: Colors.blue,
                                 elevation: 4,
-                                margin: const EdgeInsets.symmetric(vertical: 10),
+                                margin:
+                                    const EdgeInsets.symmetric(vertical: 10),
                                 child: ListTile(
                                   title: Text(
                                     userList[index].firstname,

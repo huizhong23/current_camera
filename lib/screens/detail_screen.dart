@@ -1,12 +1,12 @@
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+//import 'package:flutter/src/widgets/container.dart';
+//import 'package:flutter/src/widgets/framework.dart';
 
-import 'package:flutter/cupertino.dart';
+//import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod_http_get_request/models/user_model.dart';
-import 'package:flutter_riverpod_http_get_request/screens/camera_screen.dart';
-import 'package:image_picker/image_picker.dart';
+
+//import 'package:image_picker/image_picker.dart';
 import '../services/image_picker_service.dart';
 
 class DetailScreen extends StatelessWidget {
@@ -28,7 +28,7 @@ class DetailScreen extends StatelessWidget {
                     backgroundImage: NetworkImage(e.avatar),
                   ),
                 ),
-                Text(e.firstname + " " + e.lastname),
+                Text("${e.firstname} ${e.lastname}"),
                 Text(e.email),
               ],
             )),
